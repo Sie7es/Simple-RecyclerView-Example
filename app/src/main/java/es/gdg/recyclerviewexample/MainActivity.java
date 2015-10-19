@@ -7,9 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.List;
@@ -42,11 +44,33 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter> {
+    private class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewHolder> {
         private List<String> mDatas;
 
         public MyRecyclerViewAdapter(List<String> datas) {
             mDatas = datas;
+        }
+
+        @Override
+        public MyRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            LayoutInflater layoutInflater = LayoutInflater.from(MainActivity.this);
+
+            View view = layoutInflater.inflate(android.R.layout.simple_list_item_1, parent, false);
+
+            return new MyRecyclerViewHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(MyRecyclerViewHolder holder, int position) {
+            String title = mDatas.get(position);
+
+            holder.mTitleTextView.setText(title);
+        }
+
+        @Override
+        public int getItemCount() {
+            return mDatas.size();
+
         }
     }
 }
