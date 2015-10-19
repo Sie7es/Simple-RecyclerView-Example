@@ -12,6 +12,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
     private RecyclerView mMyRecyclerView;
 
@@ -40,4 +42,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter> {
+        private List<String> mDatas;
+
+        public MyRecyclerViewAdapter(List<String> datas) {
+            mDatas = datas;
+        }
+    }
 }
