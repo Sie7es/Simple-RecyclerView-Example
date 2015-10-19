@@ -20,6 +20,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView mMyRecyclerView;
     private List<String> mDatas;
+    private MyRecyclerViewAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
         mMyRecyclerView = (RecyclerView) findViewById(R.id.my_recyclerview);
         mMyRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+        mAdapter = new MyRecyclerViewAdapter(mDatas);
+        mMyRecyclerView.setAdapter(mAdapter);
 
     }
 
