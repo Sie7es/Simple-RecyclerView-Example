@@ -14,15 +14,19 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView mMyRecyclerView;
+    private List<String> mDatas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mDatas = populate();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -31,6 +35,17 @@ public class MainActivity extends AppCompatActivity {
         mMyRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 
     }
+
+    private List<String> populate() {
+        List<String> temp = new ArrayList<String>();
+
+        for (int cont = 0; cont < 100; cont++) {
+            temp.add("My name is " + cont);
+        }
+
+        return temp;
+    }
+
 
     private class MyRecyclerViewHolder extends RecyclerView.ViewHolder {
 
