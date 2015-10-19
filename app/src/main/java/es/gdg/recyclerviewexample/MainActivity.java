@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView mMyRecyclerView;
@@ -25,8 +26,18 @@ public class MainActivity extends AppCompatActivity {
         mMyRecyclerView = (RecyclerView) findViewById(R.id.my_recyclerview);
         mMyRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 
+    }
 
+    private class MyRecyclerViewHolder extends RecyclerView.ViewHolder {
 
+        public TextView mTitleTextView;
+
+        public MyRecyclerViewHolder(View itemView) {
+            super(itemView);
+
+            mTitleTextView = (TextView) itemView;
+
+        }
     }
 
 }
